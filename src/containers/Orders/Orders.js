@@ -14,7 +14,6 @@ class Orders extends Component {
   componentDidMount() {
     axios.get('orders.json')
       .then(res => {
-
         const fetchedOrder = [];
         for (let key in res.data) {
           fetchedOrder.push({
@@ -22,7 +21,6 @@ class Orders extends Component {
             id: key
           });
         }
-
         this.setState({ loading: false, orders: fetchedOrder });
       })
       .catch(err => {

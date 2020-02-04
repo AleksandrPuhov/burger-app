@@ -7,7 +7,7 @@ import Input from '../../../components/UI/Input/Input';
 import classes from './ContactData.module.css';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
-import * as action from '../../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
 
@@ -103,7 +103,7 @@ class ContactData extends Component {
       formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
     }
     const order = {
-      ingredients: this.props.ingr,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
     }
@@ -201,9 +201,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData) => dispatch(action.purchaseBurger(orderData))
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
